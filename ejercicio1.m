@@ -1,16 +1,59 @@
+%EXERCICI 1
 
+%apartat a: fet a la funcio cardioide y al pdf
+
+%apartat b:
 m = 7;
 inicial = 2;
-P = [2.134141, 0.864141];
-sigma = 1.04655891;
+P1 = [2.134141, 0.864141];
+tao = 1.04655891;
 iter = 4;
-
-%apartado b;
-[ x, err] = Whittaker(inicial, m, iter, P );
+[ x, err] = Whittaker(inicial, m, iter, P1, tao);
 display(x);
+display(err);
 
-%Apartado c;
-FAC = abs(1 - derivada(sigma, P)/m);
+%dibuixem la grafica de l'error
+xaxis = 1:1:iter + 1;
+plot(xaxis, log(err), 'r');
+
+%Apartat c;
+FAC = abs(1 - derivada(tao, P1)/m);
 display(FAC);
 
-%Apartado e;
+%apartat d: teoric, resolt en el document
+
+%Apartat e;
+
+P2 = [0.221486, 0.864080];
+tao2 = 0.99951548361763;
+
+%calculem l'error inicial y el comparem amb la taula.
+primer = abs(inicial - tao);
+segon = abs(inicial - tao2);
+display(primer);
+display(segon);
+
+%Dibuixem les grafiques de les projeccions del punt de P1 i P2.
+%Aixi veurem a simple vista si els punts son simples o dobles.
+figure(2);
+dibuixa_cardioide(P1);
+dibuixa_cardioide(P2);
+
+%Comprovem que realment son simples o dobles
+f_P1 = cardioide(tao, P1);
+der_P1 = derivada(tao, P1);
+display(f_P1);
+display(der_P1);
+
+f_P2 = cardioide(tao, P2);
+der_P2 = derivada(tao2, P2);
+der2_P2 = derivada2(tao2, P2);
+display(f_P2);
+display(der_P2);
+display(der2_P2);
+
+
+
+
+
+
