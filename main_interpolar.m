@@ -44,18 +44,16 @@ end
 
 for j = 1 : length(m);
     c = [];
-    for i = 1 : j
+    for i = 1 : m(j)
         g = @(x)(leg{i}(x).*leg{i}(x));
         h = @(x)(leg{i}(x).*polRunge(x));
         a = integral(g, -1, 1);
         b = integral(h, -1, 1);
         c(i) = b / a;
     end
-
+    display(c);
     A = polyval(c, xaxis);
     plot(xaxis, A);
     hold on;
 end
-
-
 
