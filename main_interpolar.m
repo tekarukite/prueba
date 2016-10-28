@@ -18,7 +18,7 @@ f = @(x) 1./(1 + 25 * (x.^2));
 %hold on;
 for i = 2:2:8
     y = polRunge(x);
-    coef = polyfit(x, y, i);
+    coef = polyfit(x, y, i)
     A = polyval(coef, axisx);
     B = @(x) polyval(coef, x);
     
@@ -42,6 +42,7 @@ for i = 1 : 9
     leg{i} = @(x) legendreP(i - 1, x);
 end
 
+xaxis = -1:0.01:1;
 for j = 1 : length(m);
     c = [];
     for i = 1 : m(j)
@@ -56,4 +57,6 @@ for j = 1 : length(m);
     plot(xaxis, A);
     hold on;
 end
+
+
 
